@@ -1,8 +1,9 @@
 package models
 
 type Product struct {
-	Id       int
-	Qauntity int
-	Uom      int
-	Name     string
+	Id        int
+	ProductID string
+	Quantity  int
+	Uom       int
+	Name      string
 }

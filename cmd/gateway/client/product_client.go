@@ -1,6 +1,7 @@
 package client
 
 import (
+	"encoding/json"
 	"example.com/models"
 	"fmt"
 	"net/http"
@@ -12,7 +13,7 @@ type ProductClient struct {
 
 func GetProductClient() *ProductClient {
 	return &ProductClient{
-		Url: "localhost:8084",
+		Url: "http://localhost:8084",
 	}
 }
 
@@ -21,6 +22,11 @@ func (p *ProductClient) GetProducts() ([]models.Product, error) {
 	if err != nil {
 		return nil, err
 	}
-	fmt.Println(req)
-	return nil, nil
+	var products []models.Product
+	resp, err := http.DefaultClient.Do(req)
+	err = json.NewDecoder(resp.Body).Decode(&products)
+	if err != nil {
+		return nil, err
+	}
+	return products, nil
 }

@@ -9,6 +9,6 @@ require (
 )
 
 // uncomment, don't commit
-replace example.com/models => /Users/eisler/Desktop/personal_repo/mono-repo-example/models
+replace example.com/models => ../../models
 
-replace example.com/router => /Users/eisler/Desktop/personal_repo/mono-repo-example/router
+replace example.com/router => ../../router
